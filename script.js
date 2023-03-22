@@ -29,6 +29,7 @@ tableau.filter(function(element){
 }) */
 
 let universitiesList = [];
+let universitiesListClean = [];
 //let filterrequest = "";
 let resultsDiv = document.getElementById("results");
 let countryInput = document.getElementById('countryinput');
@@ -50,16 +51,21 @@ searchBtn.addEventListener("click", () => {
         data.forEach (item => universitiesList.push(item));
         console.log("=_=_=_=_=_=_=_=_=_=_=");
         console.log(universitiesList);
-        /*const universitiesListCleaner = universitiesList => universitiesList.filter((item,index) => universitiesList.indexOf(item) !== index)
-        let universitiesListClean = universitiesListCleaner(universitiesList);
+
+        /*________________________Dédoublonnage du tableau de valeurs*/
+        let i = 0;
+        while(i < (universitiesList.length/2)){
+            universitiesListClean[i] = universitiesList[i];
+            i++;
+        }
         console.log("=_=_=_=_=_=_=_=_=_=_=");
-        console.log(universitiesListClean);*/
+        console.log(universitiesListClean);
 
         if(data.length < 50){
             filterBlock.style.display = "none";
             let affichage = "";
             for(let universite of data){
-                affichage += "<div class=\"countryUniv\"><h2 class=\"countryUnivName\">"+universite.name+"</h2><br/><p class=\"coutryUnivInfo\">"+universite.web_pages+"</p></div>"
+                affichage += "<div class=\"countryUniv\"><h2 class=\"countryUnivName\">"+universite.name+"</h2><br/><p class=\"countryUnivInfo\">"+universite.web_pages+"</p></div>"
                 }
                 resultsDiv.innerHTML = affichage;
         }
@@ -67,7 +73,7 @@ searchBtn.addEventListener("click", () => {
             filterBlock.style.display = "block";
             let affichage = "";
             for(let universite of data){
-                affichage += "<div class=\"countryUniv\"><h2 class=\"countryUnivName\">"+universite.name+"</h2><br/><p class=\"coutryUnivInfo\">"+universite.web_pages+"</p></div>"
+                affichage += "<div class=\"countryUniv\"><h2 class=\"countryUnivName\">"+universite.name+"</h2><br/><p class=\"countryUnivInfo\">"+universite.web_pages+"</p></div>"
                 }
                 resultsDiv.innerHTML = affichage;
         }
@@ -89,8 +95,8 @@ function filterList () {
     console.log(typeof(universitiesToFilter));
     console.log(universitiesToFilter);*/
     console.log("====================");
-    console.log("UniversitiesList :");
-    console.log(universitiesList);
+    console.log("UniversitiesListClean :");
+    console.log(universitiesListClean);
     console.log("====================");
 
     /*______________BIEN TENTÉ MAIS NON !
@@ -98,7 +104,7 @@ function filterList () {
     */
 
     let universitiesFiltered = [];
-    universitiesList.forEach(item => {
+    universitiesListClean.forEach(item => {
         //console.log(item.name);
         if(item.name.toLowerCase().match(filterPattern)){
             universitiesFiltered.push(item)
@@ -106,7 +112,7 @@ function filterList () {
     });
     let affichage = "";
     for(let universite of universitiesFiltered){
-        affichage += "<div class=\"countryUniv\"><h2 class=\"countryUnivName\">"+universite.name+"</h2><br/><p class=\"coutryUnivInfo\">"+universite.web_pages+"</p></div>"
+        affichage += "<div class=\"countryUniv\"><h2 class=\"countryUnivName\">"+universite.name+"</h2><br/><p class=\"countryUnivInfo\">"+universite.web_pages+"</p></div>"
         }
     resultsDiv.innerHTML = affichage;
 
