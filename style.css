@@ -7,7 +7,6 @@ body{
     display:flex;
     flex-direction: column;
 }
-
 section#maincontainer{
     display:flex;
     flex-direction:column;

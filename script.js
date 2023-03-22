@@ -48,7 +48,13 @@ searchBtn.addEventListener("click", () => {
         })
     .then((data) => {
         data.forEach (item => universitiesList.push(item));
+        console.log("=_=_=_=_=_=_=_=_=_=_=");
         console.log(universitiesList);
+        /*const universitiesListCleaner = universitiesList => universitiesList.filter((item,index) => universitiesList.indexOf(item) !== index)
+        let universitiesListClean = universitiesListCleaner(universitiesList);
+        console.log("=_=_=_=_=_=_=_=_=_=_=");
+        console.log(universitiesListClean);*/
+
         if(data.length < 50){
             filterBlock.style.display = "none";
             let affichage = "";
@@ -90,7 +96,7 @@ function filterList () {
     /*______________BIEN TENTÉ MAIS NON !
     let filterRegex = new RegExp ("/\w+"+filterPattern+"\w+/g");
     */
-   
+
     let universitiesFiltered = [];
     universitiesList.forEach(item => {
         //console.log(item.name);
