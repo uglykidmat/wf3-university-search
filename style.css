@@ -1,0 +1,32 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    display:flex;
+    flex-direction: column;
+}
+
+section#maincontainer{
+    display:flex;
+    flex-direction:column;
+    width:75%;
+    margin:auto;
+}
+div#results{
+    display:flex;
+    flex-flow:row wrap;
+    justify-content: space-between;
+}
+div.countryUniv{
+    margin:0.5em;
+    padding:1em;
+    max-width: 25%;
+    background-color:darkgray;
+    border-radius:1em;
+}
+
+h2.countryUnivName{
+    font-size:1em;
+}
